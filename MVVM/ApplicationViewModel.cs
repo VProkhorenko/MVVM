@@ -14,6 +14,27 @@ namespace MVVM
         private Phone selectedPhone;
 
         public ObservableCollection<Phone> Phones { get; set; }
+
+
+
+        // команда добавления нового объекта
+        //Команда хранится в свойстве AddCommand и представляет собой объект выше определенного класса RelayCommand. Этот объект в конструкторе принимает действие - делегат Action<object>. Здесь действие представлено в виде лямбда-выражения, которое добавляет в коллекцию Phones новый объект Phone и устанавливает его в качестве выбранного.
+        private RelayCommand addCommand;
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ??
+                  (addCommand = new RelayCommand(obj =>
+                  {
+                      Phone phone = new Phone();
+                      Phones.Insert(0, phone);
+                      SelectedPhone = phone;
+                  }));
+            }
+        }
+
+
         public Phone SelectedPhone
         {
             get { return selectedPhone; }

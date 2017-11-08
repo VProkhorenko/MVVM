@@ -14,6 +14,11 @@
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="14" />
         </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
     </Window.Resources>
 
 
@@ -22,7 +27,10 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="0.8*" />
         </Grid.ColumnDefinitions>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.2*" />
+        </Grid.RowDefinitions>
         <ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
                  SelectedItem="{Binding SelectedPhone}">
             <ListBox.ItemTemplate>
@@ -36,6 +44,10 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Command="{Binding AddCommand}">+</Button>
+        </StackPanel>
+        
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedPhone}">
             <TextBlock Text="Выбранный элемент"  />
             <TextBlock Text="Модель" />
