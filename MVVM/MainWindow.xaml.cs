@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MVVM.ApplicationViewModel;
 
 namespace MVVM
 {
@@ -24,7 +25,8 @@ namespace MVVM
         {
             InitializeComponent();
 
-            DataContext = new ApplicationViewModel();
+            //DataContext = new ApplicationViewModel();
+              DataContext = new ApplicationViewModel(new DefaultDialogService(), new JsonFileService());
         }
     }
 }
