@@ -31,8 +31,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="0.2*" />
         </Grid.RowDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
-                 SelectedItem="{Binding SelectedPhone}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -46,6 +45,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Command="{Binding AddCommand}">+</Button>
+            <Button Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedPhone}">-</Button>
         </StackPanel>
         
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedPhone}">

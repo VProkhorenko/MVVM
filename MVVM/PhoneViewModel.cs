@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MVVM
-{
+{/*
     public class PhoneViewModel : INotifyPropertyChanged
     {
         private Phone phone;
@@ -51,5 +51,5 @@ namespace MVVM
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-    }
+    }*/
 }
