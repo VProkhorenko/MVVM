@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MVVM
 {
@@ -82,5 +84,44 @@ namespace MVVM
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+
+
+
+
+        public class DefaultDialogService : IDialogService
+        {
+            public string FilePath { get; set; }
+
+            public bool OpenFileDialog()
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    FilePath = openFileDialog.FileName;
+                    return true;
+                }
+                return false;
+            }
+
+            public bool SaveFileDialog()
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    FilePath = saveFileDialog.FileName;
+                    return true;
+                }
+                return false;
+            }
+
+            public void ShowMessage(string message)
+            {
+                MessageBox.Show(message);
+            }
+        }
+
+
+
     }
 }
